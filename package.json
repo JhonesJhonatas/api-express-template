@@ -10,6 +10,7 @@
   },
   "scripts": {
     "dev": "npx tsx watch src/shared/infra/server/index.ts",
+    "test": "jest",
     "build": "tsup src/shared/infra/server/index.ts",
     "migration:create": "npx tsx ./node_modules/typeorm/cli.js migration:create -d src/shared/infra/database/data-source.ts",
     "migration:run": "npx tsx ./node_modules/typeorm/cli.js migration:run -d src/shared/infra/database/data-source.ts",
@@ -20,7 +21,10 @@
   "devDependencies": {
     "@rocketseat/eslint-config": "^2.2.2",
     "@types/express": "^5.0.3",
+    "@types/jest": "^30.0.0",
     "eslint": "^8.57.1",
+    "jest": "^30.0.4",
+    "ts-jest": "^29.4.0",
     "tsup": "^8.5.0",
     "typescript": "^5.8.3"
   },
@@ -30,6 +34,7 @@
     "express": "^5.1.0",
     "pg": "^8.16.3",
     "reflect-metadata": "^0.2.2",
+    "ts-node": "^10.9.2",
     "tsyringe": "^4.10.0",
     "typeorm": "^0.3.25"
   }
