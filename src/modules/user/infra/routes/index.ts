@@ -1,9 +1,9 @@
-import { Router } from "express";
+import { Router } from 'express'
 
-const userRoutes = Router();
+const userRoutes = Router()
 
-userRoutes.post("/", (req, res) => {
-  return res.json({ message: "Hello World" });
-});
+userRoutes.post('/', (req, res) => {
+  return res.json({ message: 'Hello World' })
+})
 
-export { userRoutes };
+export { userRoutes }

@@ -1,0 +1,9 @@
+services: 
+  api-express-template-db:
+    image: bitnami/postgresql:latest
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRESQL_USERNAME=api-express-template-user
+      - POSTGRESQL_PASSWORD=api-express-template-pass
+      - POSTGRESQL_DATABASE=api-express-template-db

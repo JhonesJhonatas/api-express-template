@@ -1,7 +1,7 @@
 class CreateUserService {
   async execute() {
-    return "Hello World";
+    return 'Hello World'
   }
 }
 
-export { CreateUserService };
+export { CreateUserService }

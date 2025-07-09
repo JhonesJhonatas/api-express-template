@@ -1,14 +1,28 @@
-import express from "express";
+import 'reflect-metadata'
 
-import { routes } from "@/shared/infra/routes";
+import express from 'express'
+import 'dotenv/config'
 
-const app = express();
+import { routes } from '@/shared/infra/routes'
+import { AppDataSource } from '@/shared/infra/database/data-source'
 
-app.use(express.json());
-app.use(routes);
+const PORT = process.env.PORT || 3333
 
-app.listen(3333, () => {
-  console.log("⚡ - Server is running on port 3333");
-});
+const app = express()
 
-export default app;
+app.use(express.json())
+app.use(routes)
+
+app.listen(PORT, async () => {
+  await AppDataSource.initialize()
+    .then(() => {
+      console.log('⚡ - Database connected')
+    })
+    .catch((error) => {
+      console.log('❌ - Error connecting to database', error)
+    })
+
+  console.log(`⚡ - Server is running on port ${PORT}`)
+})
+
+export default app

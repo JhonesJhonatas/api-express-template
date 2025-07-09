@@ -1,9 +1,7 @@
-import { IUserRepository } from "@/modules/user/infra/repositories/i-user-repository";
+import { IUserRepository } from '@/modules/user/infra/repositories/i-user-repository'
 
 class InMemoryUserRepository implements IUserRepository {
-  async create(): Promise<void> {
-    return;
-  }
+  async create(): Promise<void> {}
 }
 
-export { InMemoryUserRepository };
+export { InMemoryUserRepository }
