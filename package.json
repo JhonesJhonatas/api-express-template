@@ -9,8 +9,8 @@
     "url": "https://github.com/jhonesjhonatas"
   },
   "scripts": {
-    "dev": "npx tsx watch src/server.ts",
-    "build": "tsup src/server.ts"
+    "dev": "npx tsx watch src/shared/infra/server/index.ts",
+    "build": "tsup src/shared/infra/server/index.ts"
   },
   "keywords": [],
   "license": "ISC",
@@ -20,6 +20,7 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "tsyringe": "^4.10.0"
   }
 }
