@@ -12,6 +12,8 @@ A modern, scalable Node.js API template built with Express.js, TypeScript, and T
 - **Docker Support** - PostgreSQL database with Docker Compose
 - **ESLint** - Code linting with Rocketseat configuration
 - **Path Mapping** - Clean imports with TypeScript path mapping
+- **Validation** - Request validation with Celebrate
+- **Hot Reload** - Development server with tsx for fast reloading
 
 ## 📁 Project Structure
 
@@ -23,15 +25,21 @@ src/
 │       ├── entities/          # Domain entities
 │       ├── infra/            # Infrastructure layer
 │       │   ├── repositories/ # Data access layer
+│       │   │   ├── domain/   # Repository interfaces and DTOs
+│       │   │   └── ...       # Repository implementations
 │       │   └── routes/       # HTTP routes
 │       └── use-cases/        # Business logic
 │           └── create-user/   # Create user use case
+│               ├── dtos/      # Data transfer objects
+│               └── tests/     # Unit tests
 └── shared/                   # Shared components
     ├── container/            # Global DI container
-    ├── infra/               # Shared infrastructure
-    │   ├── database/        # Database configuration
-    │   ├── routes/          # Main router
-    │   └── server/          # Express server setup
+    ├── database/            # Database configuration and migrations
+    │   └── migrations/      # TypeORM migrations
+    └── infra/               # Shared infrastructure
+        ├── middlewares/     # Express middlewares
+        ├── routes/          # Main router
+        └── server/          # Express server setup
 ```
 
 ## 🛠️ Tech Stack
@@ -44,7 +52,9 @@ src/
 - **DI Container**: TSyringe
 - **Environment**: dotenv
 - **Build Tool**: tsup
+- **Development**: tsx (for hot reload)
 - **Linting**: ESLint (Rocketseat config)
+- **Validation**: Celebrate
 
 ## 🚀 Getting Started
 
@@ -83,7 +93,12 @@ src/
    docker-compose up -d
    ```
 
-5. **Run the development server**
+5. **Run database migrations**
+   ```bash
+   npm run migration:run
+   ```
+
+6. **Run the development server**
    ```bash
    npm run dev
    ```
@@ -92,8 +107,11 @@ The API will be available at `http://localhost:3333`
 
 ## 📝 Available Scripts
 
-- `npm run dev` - Start development server with hot reload
-- `npm run build` - Build the application for production
+- `npm run dev` - Start development server with hot reload using tsx
+- `npm run build` - Build the application for production using tsup
+- `npm run migration:create` - Create a new migration file
+- `npm run migration:run` - Run pending migrations
+- `npm run migration:revert` - Revert the last migration
 
 ## 🏗️ Architecture
 
@@ -111,18 +129,28 @@ This template follows **Clean Architecture** principles with a modular structure
 
 Each feature module follows this structure:
 - `entities/` - Domain entities
-- `use-cases/` - Business logic
+- `use-cases/` - Business logic with DTOs and validation
 - `infra/repositories/` - Data access implementations
 - `infra/routes/` - HTTP route definitions
 - `container/` - Dependency injection setup
 
 ## 🗄️ Database
 
-The template uses PostgreSQL with TypeORM. The database configuration is in `src/shared/infra/database/data-source.ts`.
+The template uses PostgreSQL with TypeORM. The database configuration is in `src/shared/database/data-source.ts`.
 
 ### Current Entities
 
-- **User** - Basic user entity with id, name, email, password, and timestamps
+- **User** - Basic user entity with:
+  - `id` (UUID, primary key)
+  - `name` (string)
+  - `email` (string)
+  - `password` (string)
+  - `createdAt` (timestamp)
+  - `updatedAt` (timestamp)
+
+### Available Endpoints
+
+- `POST /user/create` - Create a new user
 
 ## 🔧 Configuration
 
