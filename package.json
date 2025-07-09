@@ -1,0 +1,25 @@
+{
+  "name": "api-express-template",
+  "description": "API Express Template",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": {
+    "name": "Jhones Jhonatas",
+    "email": "jhonesjhonatas@outlook.com.br",
+    "url": "https://github.com/jhonesjhonatas"
+  },
+  "scripts": {
+    "dev": "npx tsx watch src/server.ts",
+    "build": "tsup src/server.ts"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
