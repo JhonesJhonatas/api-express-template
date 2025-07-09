@@ -1,3 +1,7 @@
+import { Repository } from 'typeorm'
+
+import AppDataSource from '@/shared/infra/database/data-source'
+
 import { User } from '@/modules/user/entities/user'
 
 import { IUserRepository } from '@/modules/user/infra/repositories/i-user-repository'
@@ -7,14 +11,18 @@ import {
 } from '@/modules/user/infra/repositories/domain'
 
 class UserRepository implements IUserRepository {
+  private ormRepository: Repository<User>
+
+  constructor() {
+    this.ormRepository = AppDataSource.getRepository(User)
+  }
+
   async create(props: CreateUserProps): Promise<CreateUserResponse> {
-    const user = new User()
+    const user = this.ormRepository.create(props)
 
-    user.name = props.name
-    user.email = props.email
-    user.password = props.password
+    await this.ormRepository.save(user)
 
-    return Promise.resolve(user)
+    return user
   }
 }
 

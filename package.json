@@ -11,9 +11,9 @@
   "scripts": {
     "dev": "npx tsx watch src/shared/infra/server/index.ts",
     "build": "tsup src/shared/infra/server/index.ts",
-    "migration:create": "npx tsx ./node_modules/typeorm/cli.js migration:create -d src/shared/database/data-source.ts",
-    "migration:run": "npx tsx ./node_modules/typeorm/cli.js migration:run -d src/shared/database/data-source.ts",
-    "migration:revert": "npx tsx ./node_modules/typeorm/cli.js migration:revert -d src/shared/database/data-source.ts"
+    "migration:create": "npx tsx ./node_modules/typeorm/cli.js migration:create -d src/shared/infra/database/data-source.ts",
+    "migration:run": "npx tsx ./node_modules/typeorm/cli.js migration:run -d src/shared/infra/database/data-source.ts",
+    "migration:revert": "npx tsx ./node_modules/typeorm/cli.js migration:revert -d src/shared/infra/database/data-source.ts"
   },
   "keywords": [],
   "license": "ISC",

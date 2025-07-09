@@ -1,15 +1,20 @@
 import { CreateUserDTO } from '@/modules/user/use-cases/create-user/dtos/create-user-dto'
 import { CreateUserResponseDTO } from '@/modules/user/use-cases/create-user/dtos/create-user-response-dto'
 
+import { IUserRepository } from '@/modules/user/infra/repositories/i-user-repository'
+import { inject, injectable } from 'tsyringe'
+
+@injectable()
 class CreateUserService {
+  constructor(
+    @inject('UserRepository')
+    private userRepository: IUserRepository,
+  ) {}
+
   async execute(data: CreateUserDTO): Promise<CreateUserResponseDTO> {
-    return Promise.resolve({
-      id: '1',
-      name: data.name,
-      email: data.email,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    })
+    const user = await this.userRepository.create(data)
+
+    return user
   }
 }
 
