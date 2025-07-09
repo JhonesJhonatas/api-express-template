@@ -10,7 +10,10 @@
   },
   "scripts": {
     "dev": "npx tsx watch src/shared/infra/server/index.ts",
-    "build": "tsup src/shared/infra/server/index.ts"
+    "build": "tsup src/shared/infra/server/index.ts",
+    "migration:create": "npx tsx ./node_modules/typeorm/cli.js migration:create -d src/shared/database/data-source.ts",
+    "migration:run": "npx tsx ./node_modules/typeorm/cli.js migration:run -d src/shared/database/data-source.ts",
+    "migration:revert": "npx tsx ./node_modules/typeorm/cli.js migration:revert -d src/shared/database/data-source.ts"
   },
   "keywords": [],
   "license": "ISC",
@@ -22,6 +25,7 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
+    "celebrate": "^15.0.3",
     "dotenv": "^17.2.0",
     "express": "^5.1.0",
     "pg": "^8.16.3",

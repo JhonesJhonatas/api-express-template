@@ -9,20 +9,20 @@ import {
 @Entity()
 export class User {
   @PrimaryGeneratedColumn('uuid')
-  id!: string
+  id: string
 
   @Column({ type: 'varchar' })
-  name!: string
+  name: string
 
   @Column({ type: 'varchar' })
-  email!: string
+  email: string
 
   @Column({ type: 'varchar' })
-  password!: string
+  password: string
 
   @CreateDateColumn({ type: 'timestamp' })
-  createdAt!: Date
+  createdAt: Date
 
   @UpdateDateColumn({ type: 'timestamp' })
-  updatedAt!: Date
+  updatedAt: Date
 }

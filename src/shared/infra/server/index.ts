@@ -4,7 +4,7 @@ import express from 'express'
 import 'dotenv/config'
 
 import { routes } from '@/shared/infra/routes'
-import { AppDataSource } from '@/shared/infra/database/data-source'
+import AppDataSource from '@/shared/database/data-source'
 
 const PORT = process.env.PORT || 3333
 

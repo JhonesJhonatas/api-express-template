@@ -1,5 +1,10 @@
+import {
+  CreateUserProps,
+  CreateUserResponse,
+} from '@/modules/user/infra/repositories/domain'
+
 abstract class IUserRepository {
-  abstract create(): Promise<void>
+  abstract create(props: CreateUserProps): Promise<CreateUserResponse>
 }
 
 export { IUserRepository }

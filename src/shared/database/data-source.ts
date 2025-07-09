@@ -3,7 +3,7 @@ import 'dotenv/config'
 
 import { User } from '@/modules/user/entities/user'
 
-export const AppDataSource = new DataSource({
+const AppDataSource = new DataSource({
   type: 'postgres',
   host: process.env.DB_HOST,
   port: Number(process.env.DB_PORT),
@@ -11,6 +11,8 @@ export const AppDataSource = new DataSource({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   entities: [User],
-  migrations: ['src/shared/infra/database/migrations/*.ts'],
+  migrations: ['src/shared/database/migrations/*.ts'],
   synchronize: false,
 })
+
+export default AppDataSource
