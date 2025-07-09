@@ -16,7 +16,7 @@ app.use(routes)
 app.listen(PORT, async () => {
   await AppDataSource.initialize()
     .then(() => {
-      console.log('⚡ - Database connected')
+      console.log('📦 - Database connected')
     })
     .catch((error) => {
       console.log('❌ - Error connecting to database', error)
